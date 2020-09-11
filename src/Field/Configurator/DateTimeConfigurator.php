@@ -85,7 +85,9 @@ final class DateTimeConfigurator implements FieldConfiguratorInterface
             $field->setFormTypeOption('html5', false);
         }
 
-        $field->setFormattedValue($formattedValue);
+        //  
+        $formattedStringValue = $formattedValue ?? '';
+        $field->setFormattedValue($formattedStringValue);
 
         $doctrineDataType = $entityDto->getPropertyMetadata($field->getProperty())->get('type');
         $isImmutableDateTime = \in_array($doctrineDataType, [Types::DATETIME_IMMUTABLE, Types::DATE_IMMUTABLE, Types::TIME_IMMUTABLE], true);
